@@ -1,10 +1,11 @@
 import { Welcome } from "./Welcome";
 
-export function App() {
+export function App({ name }) {
   return (
     <div>
+      <Welcome name="Jimmy" />
+      {/* Test with no input */}
       <Welcome />
-      {Mario}
     </div>
   );
 }
