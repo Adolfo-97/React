@@ -1,9 +1,9 @@
 import { Welcome } from "./Welcome";
 
-export function App({ name, age }) {
+export function App() {
   return (
     <div>
-      <Welcome name="Jimmy" age={20} />
+      <Welcome name="John" age={20} />
     </div>
   );
 }
