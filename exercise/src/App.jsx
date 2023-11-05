@@ -1,11 +1,9 @@
 import { Welcome } from "./Welcome";
 
-export function App({ name }) {
+export function App({ name, age }) {
   return (
     <div>
-      <Welcome name="Jimmy" />
-      {/* Test with no input */}
-      <Welcome />
+      <Welcome name="Jimmy" age={20} />
     </div>
   );
 }
