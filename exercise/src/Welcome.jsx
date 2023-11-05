@@ -5,10 +5,7 @@ export function Welcome({ name, age }) {
     <div>
       <strong>Welcome {name}!</strong>
       {age > 18 && <Age age={age} />}
-      {age && <Age age={age} />}
-      {age > 18 && age < 65 && <Age age={age} />}
-      {age > 18 && name == "John" && <Age age={age} />}
-      {<Age age={age} />}
+      {age === 0 && <p>Your are very young</p>}
     </div>
   );
 }
