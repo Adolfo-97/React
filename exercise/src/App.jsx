@@ -1,9 +1,9 @@
-import { HelloWorld } from "./HelloWorld";
+import { Hello } from "./Hello";
 
 export function App() {
   return (
     <div>
-      <HelloWorld />
+      <Hello />
     </div>
   );
 }
