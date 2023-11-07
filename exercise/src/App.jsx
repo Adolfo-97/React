@@ -1,9 +1,11 @@
 import { Welcome } from "./Welcome";
 
-export function App({ name, age }) {
+export function App() {
+  const strongName = <strong>Jimmy</strong>;
+
   return (
     <div>
-      <Welcome name="Jimmy" age={20} />
+      <Welcome name={strongName} age={22} />
     </div>
   );
 }
