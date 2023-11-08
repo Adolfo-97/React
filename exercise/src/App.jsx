@@ -1,14 +1,9 @@
-import { AlertClock } from "./AlertClock";
-import { Clock } from "./Clock";
-import { Counter } from "./Counter";
-import { MouseClicker } from "./MouseClicker";
-import { Welcome } from "./Welcome";
+import InteractiveWelcome from "./InteractiveWelcome";
 
 export function App() {
   return (
     <div>
-      <Clock />
-      <MouseClicker />
+      <InteractiveWelcome />
     </div>
   );
 }
