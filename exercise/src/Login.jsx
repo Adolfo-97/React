@@ -41,6 +41,7 @@ function Login() {
         checked={data.checkbox}
         onChange={handleChange}
       />
+      <button>Login</button>
     </div>
   );
 }
