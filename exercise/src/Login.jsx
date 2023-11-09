@@ -6,6 +6,7 @@ function Login() {
     username: "",
     password: "",
     checkbox: "",
+    status: true,
   });
 
   function handleChange(event) {
@@ -13,6 +14,7 @@ function Login() {
     const value = event.target.value;
     const checked = event.target.checked;
     const type = event.target.type;
+    const status = event.target.disabled;
     setData((d) => {
       const updated = {
         ...d,
@@ -41,7 +43,9 @@ function Login() {
         checked={data.checkbox}
         onChange={handleChange}
       />
-      <button>Login</button>
+      <button name="login" disabled={!data.username || !data.password}>
+        Login
+      </button>
     </div>
   );
 }
