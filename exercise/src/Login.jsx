@@ -24,6 +24,12 @@ function Login() {
       return updated;
     });
   }
+  function handleReset() {
+    setData({
+      username: "",
+      password: "",
+    });
+  }
 
   /*   console.log(event.target);
    */
@@ -46,6 +52,7 @@ function Login() {
       <button name="login" disabled={!data.username || !data.password}>
         Login
       </button>
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 }
