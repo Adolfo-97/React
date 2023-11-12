@@ -3,6 +3,7 @@ import { Counter } from "./Counter";
 import { FocusableInput } from "./FocusableInput";
 import InteractiveWelcome from "./InteractiveWelcome";
 import Login from "./Login";
+import { TodoList } from "./TodoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
 
 export function App() {
@@ -22,6 +23,7 @@ export function App() {
       <FocusableInput />
       <Counter />
       <Colors arr={colorObjList} />
+      <TodoList />
     </div>
   );
 }
