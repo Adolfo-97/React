@@ -1,11 +1,15 @@
 export function UncontrolledLogin(){
     function handleSubmitForm(event){
         event.preventDefault();
-        const username = event.target.elements.namedItem("username").value;
-        const password = event.target.elements.namedItem("password").value;
-        const status = event.target.elements.namedItem("status").checked;
-        const userData = [username, password, status]
-        console.log(userData)
+
+        const formData = new FormData(event.target);
+
+        const userDataApi = {
+            username: formData.get("username"), 
+            password: formData.get("password"),
+            status: formData.get("status")
+        }
+        console.log(userDataApi)
    }
     return (
         <div>
