@@ -8,8 +8,12 @@ export function TodoList() {
     const newTodo = inputValue.current.value;
     if (inputValue.current.value) {
       setTodos([...todos, newTodo]);
+      inputValue.current.value = "";
     } else {
     }
+  }
+  function handleButtonReset() {
+    setTodos([]);
   }
   return (
     <div>
@@ -20,6 +24,7 @@ export function TodoList() {
       </ul>
       <input ref={inputValue} name="input" type="text" />
       <button onClick={handleButtonClick}>Invia</button>
+      <button onClick={handleButtonReset}>Reset</button>
     </div>
   );
 }
