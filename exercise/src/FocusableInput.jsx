@@ -1,14 +1,22 @@
-import { useEffect, useRef } from "react"
+import { StrictMode, useEffect, useRef } from "react";
 
-export function FocusableInput(){
-    const trackRef = useRef(null)
-    useEffect(() => {
-        trackRef.current?.focus()
-    }, [])
+export function FocusableInput() {
+  const mountedRef = useRef(false);
+  const trackRef = useRef(null);
 
-    return (
-        <div>
-            <input ref={trackRef} type="text" />
-        </div>
-    )
+  useEffect(() => {
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      console.log("Mounted the first time");
+    } else {
+      console.log("Strictmode is on, mounted for the second time");
+    }
+    trackRef.current?.focus();
+  }, []);
+
+  return (
+    <div>
+      <input ref={trackRef} type="text" />
+    </div>
+  );
 }
