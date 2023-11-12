@@ -15,11 +15,16 @@ export function TodoList() {
   function handleButtonReset() {
     setTodos([]);
   }
+  function removeLi(index) {
+    setTodos((todos) => todos.filter((el, i) => i !== index));
+  }
   return (
     <div>
       <ul>
-        {todos.map((items) => (
-          <li>{items}</li>
+        {todos.map((item, index) => (
+          <li key={index}>
+            {item} <button onClick={() => removeLi(index)}>remove</button>
+          </li>
         ))}
       </ul>
       <input ref={inputValue} name="input" type="text" />
