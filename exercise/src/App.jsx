@@ -1,3 +1,4 @@
+import { FocusableInput } from "./FocusableInput";
 import InteractiveWelcome from "./InteractiveWelcome";
 import Login from "./Login";
 import { UncontrolledLogin } from "./UncontrolledLogin";
@@ -10,6 +11,7 @@ export function App() {
     <div>
       <Login func={onLogin}/>
       <UncontrolledLogin/>
+      <FocusableInput/>
     </div>
   );
 }
