@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-
+import "./TodoList.modules.css";
 export function TodoList() {
   const inputValue = useRef(null);
   const [todos, setTodos] = useState([]);
@@ -23,7 +23,10 @@ export function TodoList() {
       <ul>
         {todos.map((item, index) => (
           <li key={index}>
-            {item} <button onClick={() => removeLi(index)}>remove</button>
+            {item}{" "}
+            <button className="button" onClick={() => removeLi(index)}>
+              remove
+            </button>
           </li>
         ))}
       </ul>
