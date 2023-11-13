@@ -9,7 +9,7 @@ export function Clock() {
     }, 1000);
   }, []);
   return (
-    <div>
+    <div className="clock">
       <p>The current time is: {date.toLocaleTimeString()}</p>
     </div>
   );

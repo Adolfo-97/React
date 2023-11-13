@@ -1,3 +1,4 @@
+import { Clock } from "./Clock";
 import { Colors } from "./Colors";
 import { Counter } from "./Counter";
 import { FocusableInput } from "./FocusableInput";
@@ -20,6 +21,7 @@ export function App() {
   return (
     <div>
       <Welcome name={"Luca"} />
+      <Clock />
       <Login func={onLogin} />
       <UncontrolledLogin />
       <FocusableInput />
