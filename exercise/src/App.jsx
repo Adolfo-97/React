@@ -5,6 +5,7 @@ import InteractiveWelcome from "./InteractiveWelcome";
 import Login from "./Login";
 import { TodoList } from "./TodoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
+import Welcome from "./Welcome";
 
 export function App() {
   function onLogin(data) {
@@ -18,6 +19,7 @@ export function App() {
   ];
   return (
     <div>
+      <Welcome name={"Luca"} />
       <Login func={onLogin} />
       <UncontrolledLogin />
       <FocusableInput />

@@ -1,6 +1,6 @@
 function Welcome({ name, age }) {
   return (
-    <div>
+    <div className="welcome">
       <strong>Welcome {name}!</strong>
     </div>
   );
