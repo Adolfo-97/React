@@ -1,5 +1,6 @@
 import { Clock } from "./Clock";
 import { Colors } from "./Colors";
+import { Container } from "./Container";
 import { Counter } from "./Counter";
 import { FocusableInput } from "./FocusableInput";
 import InteractiveWelcome from "./InteractiveWelcome";
@@ -19,15 +20,16 @@ export function App() {
     { id: 4, name: "green" },
   ];
   return (
-    <div>
-      <Welcome name={"Luca"} />
-      <Clock />
-      <Login func={onLogin} />
-      <UncontrolledLogin />
-      <FocusableInput />
-      <Counter />
-      <Colors arr={colorObjList} />
-      <TodoList />
-    </div>
+    <Container title={"Ciao"}>
+      <div>
+        <Welcome name={"Luca"} />
+        <Clock />
+        <Login func={onLogin} />
+        <UncontrolledLogin />
+        <FocusableInput />
+        <Counter />
+        <TodoList />
+      </div>
+    </Container>
   );
 }
