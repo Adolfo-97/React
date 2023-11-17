@@ -10,12 +10,13 @@ import Login from "./Login";
 import { TodoList } from "./TodoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
 import Welcome from "./Welcome";
-import { GithubUser } from "./GithubUser";
+import { NewGithubUser } from "./NewGithubUser";
 
 export function App() {
   return (
     <div>
-      <GithubUser userName="Adolfo-97" />
+      {/* <GithubUser userName="Adolfo-97" /> */}
+      <NewGithubUser />
     </div>
   );
 }
