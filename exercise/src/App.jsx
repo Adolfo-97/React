@@ -1,15 +1,23 @@
+import { useState } from "react";
 import { Clock } from "./Clock";
 import { Colors } from "./Colors";
 import { Container } from "./Container";
 import { Counter } from "./Counter";
 import { FocusableInput } from "./FocusableInput";
 import InteractiveWelcome from "./InteractiveWelcome";
+import { LanguageContext } from "./LanguageContext";
 import Login from "./Login";
 import { TodoList } from "./TodoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
 import Welcome from "./Welcome";
 
 export function App() {
+  const [language, setlanguage] = useState("en");
+
+  function handleLanguage(event) {
+    setlanguage(event.target.value);
+  }
+
   function onLogin(data) {
     console.log("Login data:", data);
   }
@@ -22,8 +30,14 @@ export function App() {
   return (
     <Container title={"Ciao"}>
       <div>
+        <select value={language} onChange={handleLanguage}>
+          <option value="en">EN</option>
+          <option value="it">IT</option>
+        </select>{" "}
         <Welcome name={"Luca"} />
-        <Clock />
+        <LanguageContext.Provider value={language}>
+          <Clock />
+        </LanguageContext.Provider>
         <Login func={onLogin} />
         <UncontrolledLogin />
         <FocusableInput />

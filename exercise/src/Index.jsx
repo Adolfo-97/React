@@ -4,8 +4,4 @@ import React from "react"; // Import React
 
 import "./index.scss";
 
-createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+createRoot(document.getElementById("root")).render(<App />);
