@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useGithubUser } from "./useGithubUser";
 
-export default function GithubUser({ userName }) {
-  const { data, onFetchUser } = useGithubUser(userName);
+export function GithubUser({ userName }) {
+  const { data, loading, error, onFetchUser } = useGithubUser(userName);
+  const [newuser, setNewuser] = useState([null]);
 
-  function handleUserData(event) {
-    event.preventDefault();
-    onFetchUser(userName);
+  //form handling
+  function handleSubmit(event) {
+    try {
+      event.preventDefault();
+      const newuserName = new FormData(event.target);
+      setNewuser(newuserName.get("username"));
+      onFetchUser(newuser);
+    } catch (err) {
+      console.error(err);
+    }
   }
   return (
     <div>
-      <p>Insert the user you're looking for:</p>
-      <form onSubmit={handleUserData}>
+      <form onSubmit={handleSubmit}>
         <input type="text" name="username" />
         <button type="submit">Search</button>
       </form>
-      <p>
-        username:
-        {data.name == null ? "The user didn't select an username" : data.name}
-      </p>
-      <p>
-        nickname:
-        {data.login == null ? "The user didn't select a nickname" : data.login}
-      </p>
-      <img src={data.avatar_url} width={"100px"} />
+      {loading && <h1>loading</h1>}
+      {error && <h1>error</h1>}
+      {data && <h1>{data.login}</h1>}
+      {data.name && <h1>data.name</h1>}
     </div>
   );
 }

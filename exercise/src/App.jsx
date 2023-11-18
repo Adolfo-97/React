@@ -11,7 +11,7 @@ import { TodoList } from "./TodoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
 import Welcome from "./Welcome";
 import { NewGithubUser } from "./NewGithubUser";
-import GithubUser from "./GithubUser";
+import { GithubUser } from "./GithubUser";
 
 export function App() {
   return (
