@@ -16,7 +16,8 @@ export function App() {
   return (
     <div>
       {/* <GithubUser userName="Adolfo-97" /> */}
-      <NewGithubUser />
+      <Counter initialValue={0} />
+      <Counter initialValue={100} />
     </div>
   );
 }

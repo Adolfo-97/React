@@ -1,41 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { CounterDisplay } from "./CounterDisplay";
+import { useCounter } from "./useCounter";
 
-export function Counter() {
-  const [counter, setCounter] = useState(0);
-  const trackRef = useRef(null);
-
-  useEffect(() => {
-    if (trackRef.current === "up") {
-      console.log("up");
-    } else if (trackRef.current === "down") {
-      console.log("down");
-    } else {
-    }
-  }, [counter]);
-
-  function handleButtonIncrement() {
-    setCounter(counter + 1);
-    trackRef.current = "up";
-  }
-  function handleButtonDecrement() {
-    setCounter(counter - 1);
-    trackRef.current = "down";
-  }
-  function handleButtonReset() {
-    setCounter(0);
-  }
-
+export function Counter({ initialValue }) {
+  const { counter, onIncrement, onDecrement, onReset } =
+    useCounter(initialValue);
   return (
     <div>
       <CounterDisplay count={counter} />
-      <button ref={trackRef} onClick={handleButtonIncrement}>
-        Increment value
-      </button>
-      <button ref={trackRef} onClick={handleButtonDecrement}>
-        Decrement value
-      </button>
-      <button onClick={handleButtonReset}>Reset value</button>
+      <button onClick={onIncrement}>Increment value</button>
+      <button onClick={onDecrement}>Decrement value</button>
+      <button onClick={onReset}>Reset value</button>
     </div>
   );
 }
