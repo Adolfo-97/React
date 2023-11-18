@@ -1,81 +1,20 @@
 import { useState } from "react";
 import Welcome from "./Welcome";
+import { useLogin } from "./useLogin";
+import { useCurrentLocation } from "./useCurrentLocation";
 
-function Login({func}) {
-  const [data, setData] = useState({
-    username: "",
-    password: "",
-    status: true,
-  });
-  
-  function handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    const checked = event.target.checked;
-    const type = event.target.type;
-    const status = event.target.disabled;
-    setData((data) => {
-      const updated = {
-        ...data,
-        [name]: type === "checkbox" ? checked : value,
-      };
-
-      return updated;
-    });
-  }
-
-  function handleLogin(event) {
-    /* We prevent the default behaviour with this line */
-    event.preventDefault() 
-    const loginData = JSON.stringify(data);
-    func(loginData)
-}
-  function handleReset() {
-    setData({
-      username: "",
-      password: "",
-    });
-  }
-
-  /*   console.log(event.target);
-   */
-
-  
+export function Login({ func }) {
+  const { data, sendLogin, onLogin, onReset } = useLogin({ func });
+  const { latitude, longitude, findMe, status, error } =
+    useCurrentLocation(null);
   return (
     <div>
-      <form onSubmit={handleLogin}>
-        <input name="username" value={data.username} onChange={handleChange} />
-        <input
-        name="password"
-        type="password"
-        value={data.password}
-        onChange={handleChange}
-        />
-        <input name="checkbox" type="checkbox" checked={data.checkbox} onChange={handleChange} />
-
-        <button type="submit" disabled={!data.username || !data.password}>Login</button>
-       <button onClick={handleReset}>Reset</button>
-</form>
-
-      {/* <Welcome name={data.username} />
-      <input name="username" value={data.username} onChange={handleChange} />
-      <input
-        name="password"
-        type="password"
-        value={data.password}
-        onChange={handleChange}
-      />
-      <input
-        name="checkbox"
-        type="checkbox"
-        checked={data.checkbox}
-        onChange={handleChange}
-      />
-      <button name="login" disabled={!data.username || !data.password}>
-        Login
-      </button>
-      <button onClick={handleReset}>Reset</button> */}
+      <p>user position</p>
+      <p>{latitude}</p>
+      <p>{longitude}</p>
+      <button onClick={findMe}>Find me</button>
+      {status && <p>{status}</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 }
-export default Login;
