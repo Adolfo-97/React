@@ -11,6 +11,7 @@ import { TodoList } from "./TodoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
 import Welcome from "./Welcome";
 import { NewGithubUser } from "./NewGithubUser";
+import GithubUser from "./GithubUser";
 
 export function App() {
   return (
@@ -18,6 +19,7 @@ export function App() {
       {/* <GithubUser userName="Adolfo-97" /> */}
       <Counter initialValue={0} />
       <Counter initialValue={100} />
+      <GithubUser userName={"Adolfo-97"} />
     </div>
   );
 }
