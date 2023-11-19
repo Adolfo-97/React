@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Welcome } from "./Welcome";
 
 export function App() {
   return (
     <div>
-      <Welcome name="John" age={1} />
+      <Welcome name="marco" age={20} />
     </div>
   );
 }
