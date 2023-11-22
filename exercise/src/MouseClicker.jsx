@@ -1,13 +1,22 @@
+import { useEffect } from "react";
+
 export function MouseClicker() {
-  function handlebuttonClick(event) {
-    console.log(
-      event.target.src
-    ); /* We prevent to name attribute of the button from bein printed by pointing the src content from the event instead of the name */
+  function handleMouseClick(event) {
+    console.log(event.target.name);
+  }
+  function handleImageClick(event) {
+    console.log(event.currentTarget.src);
   }
   return (
-    <button name="one" onClick={handlebuttonClick}>
-      <img src="Ciao" width={24} height={24} />
-      Click me
-    </button>
+    <div>
+      <button name="one" onClick={handleMouseClick}>
+        <img
+          onClick={handleImageClick}
+          src="https://student.develhope.co/assets/images/brand/develhope.svg"
+          width={"124px"}
+          alt=""
+        />
+      </button>
+    </div>
   );
 }
