@@ -1,8 +1,15 @@
-function Welcome({ name, age }) {
+import { Age } from "./Age";
+
+export function Welcome({ name, age }) {
   return (
     <div>
-      <strong>Welcome {name}!</strong>
+      <p>
+        Welcome:
+        <strong>{name}</strong>
+        <p>
+          <Age age={age} />
+        </p>
+      </p>
     </div>
   );
 }
-export default Welcome;

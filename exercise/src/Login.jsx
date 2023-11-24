@@ -1,52 +1,52 @@
 import { useState } from "react";
-import Welcome from "./Welcome";
 
-function Login() {
+export function Login({ loginFunction }) {
   const [data, setData] = useState({
     username: "",
     password: "",
-    checkbox: "",
-    status: true,
+    session: "",
   });
-
+  function handleLogin() {
+    loginFunction(data);
+  }
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     const checked = event.target.checked;
     const type = event.target.type;
-    const status = event.target.disabled;
     setData((d) => {
-      const updated = {
+      const updatedData = {
         ...d,
         [name]: type === "checkbox" ? checked : value,
       };
-
-      return updated;
+      return updatedData;
     });
+    console.log(data);
   }
-
-  /*   console.log(event.target);
-   */
   return (
     <div>
-      <Welcome name={data.username} />
-      <input name="username" value={data.username} onChange={handleChange} />
+      <p>Login data:</p>
       <input
-        name="password"
+        onChange={handleChange}
+        type="text"
+        value={data.username}
+        name="username"
+      />
+      <input
+        onChange={handleChange}
         type="password"
         value={data.password}
-        onChange={handleChange}
+        name="password"
       />
       <input
-        name="checkbox"
-        type="checkbox"
-        checked={data.checkbox}
         onChange={handleChange}
+        type="checkbox"
+        value={data.session}
+        name="checkbox"
       />
-      <button name="login" disabled={!data.username || !data.password}>
-        Login
+      <button disabled={!data.username || !data.password} onClick={handleLogin}>
+        Submit
       </button>
     </div>
   );
 }
-export default Login;
