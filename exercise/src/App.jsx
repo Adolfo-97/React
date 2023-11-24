@@ -1,5 +1,4 @@
-import InteractiveWelcome from "./InteractiveWelcome";
-import Login from "./Login";
+import { Login } from "./Login";
 
 export function App() {
   return (
