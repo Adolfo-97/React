@@ -1,4 +1,4 @@
-import InteractiveWelcome from "./InteractiveWelcome";
+import { InteractiveWelcome } from "./InteractiveWelcome";
 
 export function App() {
   return (
