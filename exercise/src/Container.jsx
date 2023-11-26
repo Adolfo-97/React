@@ -1,17 +1,17 @@
 import { useState } from "react";
 
 export function Container({ title, children }) {
-  const [collapse, setCollapse] = useState(true);
-
-  function handleCollapse() {
+  const [collapse, setCollapse] = useState(null);
+  function collpaseContent() {
     setCollapse((c) => !c);
+    console.log(collapse);
   }
   return (
     <div className="app">
-      <div className="app-title">
-        {title} <button onClick={handleCollapse}>Collapse</button>
+      <div onClick={collpaseContent} className="app-title">
+        {title}
       </div>
-      {collapse && <div className="app-container">{children}</div>}
+      {collapse && <div className="app-content">{children}</div>}
     </div>
   );
 }
