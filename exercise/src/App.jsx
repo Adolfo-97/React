@@ -10,7 +10,7 @@ export function App({ name }) {
       <hr />
       <Link to="/counter">Counter</Link>
       <hr />
-      <Link to="/users/Adolfo-97">Github User!</Link>
+      <Link to="/users/Adolfo-97">Adolfo's Github</Link>
       <Routes>
         <Route path="/" element={<Welcome name="Mark" />} />
         <Route path="/counter" element={<Counter />} />
