@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import GithubUser from "./GithubUser";
+import { GithubUser } from "./GithubUser";
 
 export function NewGithubUser() {
-  const [newuser, setNewuser] = useState([null]);
+  const [newuser, setNewuser] = useState(["Adolfo-97"]);
 
   function handleSubmit(event) {
     try {

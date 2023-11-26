@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function GithubUser({ userName }) {
+export function GithubUser({ userName }) {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -9,11 +9,11 @@ export default function GithubUser({ userName }) {
       .then((json) => {
         setUsername(json);
         console.log(json);
+      })
+      .catch((error) => {
+        console.error("Error fetching:", error);
       });
-    /*       .catch((error) => new Error());
-     */
-  }, []);
-
+  }, [userName]);
   return (
     <div>
       <p>
