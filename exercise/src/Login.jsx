@@ -1,81 +1,76 @@
 import { useState } from "react";
-import Welcome from "./Welcome";
-
-function Login({func}) {
-  const [data, setData] = useState({
+function initialiseData() {
+  return {
     username: "",
     password: "",
-    status: true,
-  });
-  
+    session: false,
+  };
+}
+export function Login({ loginFunction }) {
+  const [data, setData] = useState(initialiseData());
+  function handleLogin() {
+    loginFunction(data);
+  }
+  function handleReset() {
+    setData(initialiseData());
+  }
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     const checked = event.target.checked;
     const type = event.target.type;
-    const status = event.target.disabled;
-    setData((data) => {
-      const updated = {
-        ...data,
+    setData((d) => {
+      const updatedData = {
+        ...d,
         [name]: type === "checkbox" ? checked : value,
       };
-
-      return updated;
+      return updatedData;
     });
+    console.log(data);
   }
-
-  function handleLogin(event) {
-    /* We prevent the default behaviour with this line */
-    event.preventDefault() 
-    const loginData = JSON.stringify(data);
-    func(loginData)
-}
-  function handleReset() {
-    setData({
-      username: "",
-      password: "",
+  function handleSubmit(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    const checked = event.target.checked;
+    const type = event.target.type;
+    event.preventDefault();
+    console.log(event.target.value);
+    setData((d) => {
+      const updatedData = {
+        ...d,
+        [name]: type === "checkbox" ? checked : value,
+      };
+      return updatedData;
     });
+    console.log(data);
   }
-
-  /*   console.log(event.target);
-   */
-
-  
   return (
     <div>
-      <form onSubmit={handleLogin}>
-        <input name="username" value={data.username} onChange={handleChange} />
+      <form onSubmit={handleSubmit}>
+        <p>Login data:</p>
         <input
-        name="password"
-        type="password"
-        value={data.password}
-        onChange={handleChange}
+          onChange={handleChange}
+          type="text"
+          value={data.username}
+          name="username"
         />
-        <input name="checkbox" type="checkbox" checked={data.checkbox} onChange={handleChange} />
-
-        <button type="submit" disabled={!data.username || !data.password}>Login</button>
-       <button onClick={handleReset}>Reset</button>
-</form>
-
-      {/* <Welcome name={data.username} />
-      <input name="username" value={data.username} onChange={handleChange} />
-      <input
-        name="password"
-        type="password"
-        value={data.password}
-        onChange={handleChange}
-      />
-      <input
-        name="checkbox"
-        type="checkbox"
-        checked={data.checkbox}
-        onChange={handleChange}
-      />
-      <button name="login" disabled={!data.username || !data.password}>
-        Login
-      </button>
-      <button onClick={handleReset}>Reset</button> */}
+        <input
+          onChange={handleChange}
+          type="password"
+          value={data.password}
+          name="password"
+        />
+        <input
+          onChange={handleChange}
+          type="checkbox"
+          checked={data.session}
+          name="session"
+        />
+        <button disabled={!data.username || !data.password} type="submit">
+          Submit
+        </button>
+        <button onClick={handleReset}>Reset</button>
+      </form>
     </div>
   );
 }
-export default Login;

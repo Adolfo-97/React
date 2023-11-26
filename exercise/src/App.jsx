@@ -1,13 +1,12 @@
-import InteractiveWelcome from "./InteractiveWelcome";
-import Login from "./Login";
+import { Login } from "./Login";
 
 export function App() {
   function onLogin(data) {
-    console.log('Login data:', data)
+    console.log("Login data:", data);
   }
   return (
     <div>
-      <Login func={onLogin}/>
+      <Login loginFunction={onLogin} />
     </div>
   );
 }
