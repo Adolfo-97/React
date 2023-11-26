@@ -15,6 +15,15 @@ export function App({ name }) {
         <Route path="/" element={<Welcome name="Mark" />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/users/:username" element={<ShowGithubUser />} />
+        <Route
+          path="*"
+          element={
+            <div>
+              <p>Page not found</p>
+              <Link to="/">Take me home </Link>
+            </div>
+          }
+        />
       </Routes>
     </div>
   );
