@@ -1,16 +1,13 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Welcome } from "./Welcome";
 import { Counter } from "./Counter";
+import { ShowGithubUser } from "./ShowGithubUser";
 
 export function App({ name }) {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Welcome name="Mark" />} />
-        <Route
-          path="/Counter"
-          element={<Counter initialValue={0} increment={1} />}
-        />
+        <Route path="users/:username" element={<ShowGithubUser />} />
       </Routes>
     </div>
   );
