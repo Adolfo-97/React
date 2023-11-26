@@ -1,11 +1,12 @@
+import { Route, Routes } from "react-router-dom";
 import { Welcome } from "./Welcome";
 
 export function App({ name }) {
   return (
     <div>
-      <Welcome name="Mark" />
-      {/* Test with no input */}
-      <Welcome />
+      <Routes>
+        <Route path="/" element={<Welcome name="Mark" />} />
+      </Routes>
     </div>
   );
 }
