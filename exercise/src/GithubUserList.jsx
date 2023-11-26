@@ -19,8 +19,8 @@ export function GithubUserList() {
   return (
     <ul>
       {userlist &&
-        userlist.map((user) => (
-          <li>
+        userlist.map((user, index) => (
+          <li key={index}>
             <Link to={user.login}>{user.login}</Link>
           </li>
         ))}
