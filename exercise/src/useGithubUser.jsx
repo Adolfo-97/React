@@ -1,16 +1,14 @@
 import useSWR from "swr";
+const fetcher2 = (url) => fetch(url).then((r) => r.json());
 
 export function useGithubUser(userName) {
-  const { data, error, mutate } = useSWR(userName, async (userName) => {
-    const response = await fetch(`https://api.github.com/users/${userName}`);
-    const json = await response.json();
-    return json;
-  });
+  const { data, error, mutate } = useSWR(
+    `https://api.github.com/users/${userName}`,
+    fetcher2
+  );
 
   const onFetchUser = async () => {
     mutate(userName);
-    console.log("should have mutated");
-    console.log("new username:");
     console.log(userName);
   };
 
