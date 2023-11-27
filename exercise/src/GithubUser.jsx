@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGithubUser } from "./useGithubUser";
 
 export function GithubUser() {
+  console.log("1");
   const [userName, setUserName] = useState("Adolfo-97");
   const { data, error, onFetchUser } = useGithubUser(userName);
 
