@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useGithubUser } from "./useGithubUser";
 
-export default function GithubUser({ userName }) {
-  const { data, onFetchUser } = useGithubUser(userName);
+export function GithubUser() {
+  const [userName, setUserName] = useState("Adolfo-97");
+  const { data, error, onFetchUser } = useGithubUser(userName);
 
-  function handleUserData(event) {
+  const handleUserData = (event) => {
     event.preventDefault();
-    onFetchUser(userName);
-  }
+    const newUserName = event.target.username.value;
+    setUserName(newUserName);
+    onFetchUser(newUserName);
+  };
+
   return (
     <div>
       <p>Insert the user you're looking for:</p>
@@ -15,15 +19,14 @@ export default function GithubUser({ userName }) {
         <input type="text" name="username" />
         <button type="submit">Search</button>
       </form>
-      <p>
-        username:
-        {data.name == null ? "The user didn't select an username" : data.name}
-      </p>
-      <p>
-        nickname:
-        {data.login == null ? "The user didn't select a nickname" : data.login}
-      </p>
-      <img src={data.avatar_url} width={"100px"} />
+      {error && <p>Error fetching data</p>}
+      {data && (
+        <div>
+          <p>username: {data.name || "The user didn't select an username"}</p>
+          <p>nickname: {data.login || "The user didn't select a nickname"}</p>
+          <img src={data.avatar_url} width={"100px"} alt="User Avatar" />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
-export function useGithubUser({ userName }) {
-  const [data, setData] = useState("");
+export function useGithubUser(userName) {
+  const { data, error, mutate } = useSWR(userName, async (userName) => {
+    const response = await fetch(`https://api.github.com/users/${userName}`);
+    const json = await response.json();
+    return json;
+  });
 
-  async function fetchGithubUser(userName) {
-    try {
-      const response = await fetch(`https://api.github.com/users/${userName}`);
-      const json = await response.json();
-      setData(json);
-    } catch (error) {}
-  }
+  const onFetchUser = async () => {
+    mutate(userName);
+    console.log("should have mutated");
+    console.log("new username:");
+    console.log(userName);
+  };
 
-  return { data, onFetchUser: fetchGithubUser };
+  return { data, error, onFetchUser };
 }
