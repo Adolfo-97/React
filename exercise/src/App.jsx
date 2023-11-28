@@ -1,11 +1,16 @@
 import { GithubUser } from "./GithubUser";
+import { SWRConfig } from "swr";
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export function App() {
   return (
-    <div>
-      {/* <GithubUser userName="Adolfo-97" /> */}
+    <SWRConfig value={{ fetcher }}>
+      <div>
+        {/* <GithubUser userName="Adolfo-97" /> */}
 
-      <GithubUser userName={"Adolfo-97"} />
-    </div>
+        <GithubUser userName={"Adolfo-97"} />
+      </div>
+    </SWRConfig>
   );
 }
